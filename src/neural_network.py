@@ -33,6 +33,13 @@ class Artificial_Neural_Network:
                hidden_size:int, 
                output_size:int) -> None:
     
+    if not isinstance(input_size, int):
+      raise TypeError(f"An Integer is expected for 'input_size', got a {type(input_size)}")
+    if not isinstance(hidden_size, int):
+      raise TypeError(f"An Integer is expected for 'hidden_size', got a {type(hidden_size)}")
+    if not isinstance(output_size, int):
+      raise TypeError(f"An Integer is expected for 'output_size', got a {type(output_size)}")
+    
     self.input_size = input_size
     self.hidden_size = hidden_size
     self.output_size = output_size
@@ -99,6 +106,11 @@ class Artificial_Neural_Network:
         c -> output layer weights
     """
 
+    if not isinstance(features, np.ndarray):
+      raise TypeError(f"Features should be added as a 'np.ndarray', instead got a {type(features)}")
+    if not isinstance(labels, np.ndarray):
+      raise TypeError(f"Labels should be added as a 'np.ndarray', instead got a {type(labels)}")
+    
     rows = features.shape[0]
     inputs = self.input_size
     hidden = self.hidden_size
@@ -208,6 +220,13 @@ class Artificial_Neural_Network:
         YK_V -> array with the predicted labels
     """
 
+    if not isinstance(features, np.ndarray):
+      raise TypeError(f"Features should be added as a 'np.ndarray', instead got a {type(features)}")
+    if not isinstance(w, np.ndarray):
+      raise TypeError(f"'W' must be a matrix <class 'np.ndarray'>, instead got a {type(w)}")
+    if not isinstance(c, np.ndarray):
+      raise TypeError(f"'C' must be a matrix <class 'np.ndarray'>, instead got a {type(c)}")
+    
     rows = features.shape[0]
     outputs = self.output_size
     hidden = self.hidden_size
@@ -257,6 +276,11 @@ class Artificial_Neural_Network:
         accuracy_score -> general accuracy
     """
 
+    if not isinstance(true_values, np.ndarray):
+      raise TypeError(f"Features should be added as a 'np.ndarray', instead got a {type(true_values)}")
+    if not isinstance(predicted_values, np.ndarray):
+      raise TypeError(f"Predictions should be added as a 'np.ndarray', instead got a {type(predicted_values)}")
+    
     n_partitions = len(np.unique(true_values)) #Define the number of partitions
     bins = np.linspace(0, 1, n_partitions + 1) #Create ranges' limits
     arr_class = np.digitize(predicted_values, bins).astype(float) #Classify the data in the ranges
@@ -314,6 +338,13 @@ class Artificial_Neural_Network:
         table -> a table with the real class, predicted class, and probability
     """
 
+    if not isinstance(true_values, np.ndarray):
+      raise TypeError(f"Features must be added as a 'np.ndarray', instead got a {type(true_values)}")
+    if not isinstance(predicted_values, np.ndarray):
+      raise TypeError(f"Predictions must be added as a 'np.ndarray', instead got a {type(predicted_values)}")
+    if not isinstance(names, np.ndarray):
+      raise TypeError(f"Target Names must be added as a 'np.ndarray', instead got a {type(names)}")
+    
     n_partitions = len(np.unique(true_values)) #Define the number of partitions
     bins = np.linspace(0, 1, n_partitions + 1) #Create ranges' limits
     arr_class = np.digitize(predicted_values, bins).astype(float) #Classify the data in the ranges
