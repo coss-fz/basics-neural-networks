@@ -321,13 +321,14 @@ class Artificial_Neural_Network:
     real = true_values.reshape((true_values.shape[0], 1))
     clasif = arr_class.reshape((arr_class.shape[0], 1))
     probas = 1-np.abs(clasif-predicted_values)
-    tabla = pd.DataFrame(np.hstack((clasif, probas, real)), 
+    table = pd.DataFrame(np.hstack((clasif, probas, real)), 
                         columns=['Model Classification', 'Probability', 'Real Classification'])
 
-    valores_unicos = tabla['Real Classification'].unique()
-    nombres = names
-    mapeo = {valor: nombre for valor, nombre in zip(valores_unicos, nombres)}
-    tabla['Model Classification'] = tabla['Model Classification'].replace(mapeo)
-    tabla['Real Classification'] = tabla['Real Classification'].replace(mapeo)
+    valores_unicos = table['Real Classification'].unique()
+    head_names = names
+    mapeo = {valor: nombre for valor, nombre in zip(valores_unicos, head_names)}
+    table['Model Classification'] = table['Model Classification'].replace(mapeo)
+    table['Real Classification'] = table['Real Classification'].replace(mapeo)
 
-    return tabla
+
+    return table
