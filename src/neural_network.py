@@ -84,7 +84,7 @@ class Artificial_Neural_Network:
           labels:np.ndarray,
           alpha:float, 
           iterations:int, 
-          ECM_stop:float) -> np.ndarray and np.ndarray and np.ndarray:
+          MSE_stop:float) -> np.ndarray and np.ndarray and np.ndarray:
     """
     This function is in charge to perform the training of the neural network
       Parameters:
@@ -92,7 +92,7 @@ class Artificial_Neural_Network:
         labels -> array with the dataset class labels
         alpha -> learning rate
         iterations -> training repetitions
-        ECM_stop -> target loss to stop training
+        MSE_stop -> target loss to stop training
       Returns:
         YK_T -> training predictions
         w -> hidden layer weights
@@ -124,8 +124,8 @@ class Artificial_Neural_Network:
 
     ##Losses
     E = np.zeros((rows,outputs))
-    ECM = np.zeros((outputs,1))
-    ECM_T = np.zeros((outputs,1))
+    MSE = np.zeros((outputs,1))
+    MSE_T = np.zeros((outputs,1))
 
     max_iter = iterations
 
@@ -135,8 +135,8 @@ class Artificial_Neural_Network:
         print("\nITERATIONS LIMIT REACHED\n")
         break
 
-      ECM[:] = 0
-      ECM_SUM = 0
+      MSE[:] = 0
+      MSE_SUM = 0
       
       for i in range(0, len(features)):
         ##Hidden Layer Agregation
@@ -172,22 +172,22 @@ class Artificial_Neural_Network:
               ####w[k][j] = w[k][j]+alfa*E[i][e]*1*c[e][k]*1*X[i][j]
               w[k][j] = w[k][j]+a*E[i][e]*(YK_T[i][e]*(1-YK_T[i][e]))*c[e][k]*(HJ[k]*(1-HJ[k]))*features[i][j]
       
-      ##ECM
+      ##MSE
       for k in range(outputs):
         for i in range(len(E)):
-          ECM[k] = ECM[k]+((E[i][k]**2/2))
+          MSE[k] = MSE[k]+((E[i][k]**2/2))
 
-      ECM_T = np.hstack((ECM_T, ECM))
-      ECM_SUM = np.sum(ECM)
+      MSE_T = np.hstack((MSE_T, MSE))
+      MSE_SUM = np.sum(MSE)
 
-      if ECM_SUM <= ECM_stop:
+      if MSE_SUM <= MSE_stop:
         break
 
-    ##ECM Graphic
-    print("ECM = ", ECM_SUM)
+    ##MSE Graphic
+    print("MSE =", MSE_SUM)
     plt.figure(figsize=(10,5))
-    plt.plot(ECM_T[0], 'k')
-    plt.title('ECM Entrenamiento')
+    plt.plot(MSE_T[0], 'k')
+    plt.title('Loss (MSE) During Training')
 
 
     return YK_T, w, c
@@ -270,7 +270,8 @@ class Artificial_Neural_Network:
   ####### Instance Method #######
   def graph_results(self,
                     true_values:np.ndarray, 
-                    predicted_values:np.ndarray) -> None:
+                    predicted_values:np.ndarray,
+                    title:str) -> None:
     """
     This function makes a graph with the prediction results of the MLP model
       Parameters:
@@ -296,7 +297,7 @@ class Artificial_Neural_Network:
     plt.plot(aux_YD, '*b', label='Real Value')
     plt.plot(aux_YK[0], '*r', label='Model Prediction')
     plt.legend(loc='best')
-    plt.title('Real vs Prediction')
+    plt.title(title)
 
 
   @staticmethod
