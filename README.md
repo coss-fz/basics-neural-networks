@@ -1,7 +1,7 @@
 # Neural Networks: Basic Concepts
-This repository is for a project that involves the construccion of a basic neural network (MLP), and the performance comparison against the commonly used libraries (Py Torch and Tensorflow Keras).
+This repository is for a project that involves the construction of a basic neural network (MLP), and the performance comparison against the commonly used libraries (Py Torch and Tensorflow Keras).
 
-If you aren't familiar with neural networks, go to the '[Dashboard-PD](Artificial_Neural_Networks.pdf)' file, where I explain the basics concepts with a MLP. If you're not familiar with Machine Learning either, you should learn it first in order to understand how a Deep learning model works.
+If you aren't familiar with neural networks, go to the '[Artificial_Neural_Networks](Artificial_Neural_Networks.pdf)' file, where I explain the basics concepts with a MLP. If you're not familiar with Machine Learning either, you should learn it first in order to understand how a Deep learning model works.
 
 
 ## Quick Start
@@ -37,3 +37,9 @@ Once you are all set, feel free to browse through the project.
    pytest tests/test_neural_network.py
    ```
 * Go to the Jupyter Notebooks which contain the examples, and run them yourself
+
+
+---
+## Notes
+* Keep in mind that this project is very basic because the purpose is purely educational, the [ANN](src/neural_network.py) created won't work properly in a project with production standards
+* You can try with your own data sets (just be careful to do the right preprocessing), and with other configurations and topologies
