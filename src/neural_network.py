@@ -116,7 +116,7 @@ class Artificial_Neural_Network:
     hidden = self.hidden_size
     outputs = self.output_size
 
-    ##Agregations
+    ##Aggregations
     AJ = self.__class__.AJ
     AK = self.__class__.AK 
 
@@ -231,7 +231,7 @@ class Artificial_Neural_Network:
     outputs = self.output_size
     hidden = self.hidden_size
 
-    ##Agregations
+    ##Aggregations
     AJ = self.__class__.AJ  
     AK = self.__class__.AK  
 
