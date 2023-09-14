@@ -1,6 +1,7 @@
 # Neural Networks: Basic Concepts
 This repository is for a project that involves the construccion of a basic neural network (MLP), and the performance comparison against the commonly used libraries (Py Torch and Tensorflow Keras).
-If you aren't familiar with neural networks, go to ..., where I explain the basics concepts with a MLP.
+
+If you aren't familiar with neural networks, go to the '[Dashboard-PD](Artificial_Neural_Networks.pdf)' file, where I explain the basics concepts with a MLP. If you're not familiar with Machine Learning either, you should learn it first in order to understand how a Deep learning model works.
 
 
 ## Quick Start
